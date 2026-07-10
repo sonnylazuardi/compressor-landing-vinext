@@ -22,15 +22,9 @@ export default defineConfig(async () => {
     plugins: [
       vinext(),
       sites(),
+      // Matches vinext examples/app-router-cloudflare: RSC worker + SSR child.
       cloudflare({
         viteEnvironment: { name: "rsc", childEnvironments: ["ssr"] },
-        // wrangler.jsonc points main at dist/ for no_bundle deploy. Vite still
-        // needs the TypeScript Worker entry as the compile input.
-        config: {
-          main: "./worker/index.ts",
-          no_bundle: false,
-          build: undefined,
-        },
       }),
     ],
   };
