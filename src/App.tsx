@@ -104,7 +104,11 @@ export default function App() {
 
       <section className="hero" id="top">
         <div className="hero__copy">
-          <h1>Private. Native. Smaller images. Same good taste.</h1>
+          <h1>
+            <span className="hero__title-lock">Private. Native.</span>{" "}
+            <span className="hero__title-lock">Smaller images.</span> Same good
+            taste.
+          </h1>
           <p className="hero__intro">
             Turn everyday images into lightweight WebP files, right on your desktop.
           </p>

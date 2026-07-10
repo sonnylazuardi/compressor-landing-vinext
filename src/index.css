@@ -155,11 +155,15 @@ p {
 
 h1 {
   margin-bottom: 26px;
-  max-width: calc(10ch + 60px);
+  max-width: 16ch;
   font-size: clamp(54px, 5.2vw, 82px);
   line-height: 0.96;
   letter-spacing: -0.068em;
   font-weight: 720;
+}
+
+.hero__title-lock {
+  white-space: nowrap;
 }
 
 .hero__intro {
@@ -600,7 +604,7 @@ footer > a {
   }
 
   h1 {
-    max-width: calc(11ch + 60px);
+    max-width: 16ch;
   }
 
   .hero__visual {
