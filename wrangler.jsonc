@@ -1,12 +1,9 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "compressor-landing",
+  "name": "compressor-landing-vinext",
   "compatibility_date": "2026-07-10",
   "compatibility_flags": ["nodejs_compat"],
   "main": "./worker/index.ts",
-  "build": {
-    "command": "npm run build"
-  },
   "assets": {
     "directory": "dist/client",
     "not_found_handling": "none",
