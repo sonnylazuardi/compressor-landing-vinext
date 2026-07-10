@@ -24,6 +24,13 @@ export default defineConfig(async () => {
       sites(),
       cloudflare({
         viteEnvironment: { name: "rsc", childEnvironments: ["ssr"] },
+        // wrangler.jsonc points main at dist/ for no_bundle deploy. Vite still
+        // needs the TypeScript Worker entry as the compile input.
+        config: {
+          main: "./worker/index.ts",
+          no_bundle: false,
+          build: undefined,
+        },
       }),
     ],
   };

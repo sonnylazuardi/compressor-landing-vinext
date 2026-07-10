@@ -16,31 +16,16 @@ Open `http://localhost:3000`.
 
 ## Deploy to Cloudflare Workers
 
-This is a **vinext** app. Vite must build the Worker before Wrangler deploys it.
-Do not put a `build.command` in `wrangler.jsonc` — that breaks Vite virtual modules.
-
-### Local deploy
-
 ```bash
 npx wrangler login
-npm run deploy
+npx wrangler deploy
 ```
 
-### Cloudflare Workers Builds (GitHub)
+`wrangler.jsonc` runs `npm run build` (vinext/Vite), then uploads the prebuilt
+Worker from `dist/server` with `no_bundle`. That matches Cloudflare Workers
+Builds when the deploy command is the default `npx wrangler deploy`.
 
-In the Worker → **Settings → Build**, set:
-
-| Setting | Value |
-| --- | --- |
-| Build command | *(leave empty)* |
-| Deploy command | `npm run deploy` |
-| Root directory | `/` |
-
-`npm run deploy` runs `vinext build` then `wrangler deploy` (uses the
-prebuilt Worker in `dist/`, not a second Wrangler bundle of source).
-
-Do **not** use bare `npx wrangler deploy` and do **not** select a Next.js /
-OpenNext framework preset.
+Do **not** select a Next.js / OpenNext framework preset.
 
 ## Production checks
 
