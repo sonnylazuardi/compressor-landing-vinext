@@ -1,12 +1,53 @@
 import Image from "next/image";
-import { Command, Star, type LucideProps } from "lucide-react";
 
 const macDownload =
   "https://github.com/sonnylazuardi/image-compressor-native-sdk/releases/download/v0.1.2/Compressor-macos-arm64.zip";
 const windowsDownload =
   "https://github.com/sonnylazuardi/image-compressor-native-sdk/releases/download/v0.1.2/Compressor-windows-x64.zip";
 
-function WindowsIcon({ size = 24, className }: Pick<LucideProps, "size" | "className">) {
+type IconProps = { size?: number; className?: string };
+
+function CommandIcon({ size = 18, className }: IconProps) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className={className}
+    >
+      <path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3" />
+    </svg>
+  );
+}
+
+function StarIcon({ size = 15, className }: IconProps) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2.25}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className={className}
+    >
+      <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
+    </svg>
+  );
+}
+
+function WindowsIcon({ size = 16, className }: IconProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -28,14 +69,14 @@ function DownloadButtons({ compact = false }: { compact?: boolean }) {
       <a className="download-button download-button--primary" href={macDownload}>
         <span className="download-button__platform">macOS</span>
         <span className="download-button__label">
-          <Command aria-hidden size={18} strokeWidth={2} />
+          <CommandIcon />
           Download for Mac
         </span>
       </a>
       <a className="download-button download-button--secondary" href={windowsDownload}>
         <span className="download-button__platform">Windows</span>
         <span className="download-button__label">
-          <WindowsIcon size={16} />
+          <WindowsIcon />
           Download for Windows
         </span>
       </a>
@@ -65,7 +106,7 @@ export default function Home() {
             className="nav-download"
             href="https://github.com/sonnylazuardi/image-compressor-native-sdk"
           >
-            <Star aria-hidden size={15} strokeWidth={2.25} />
+            <StarIcon />
             Star on GitHub
           </a>
         </nav>
