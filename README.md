@@ -17,30 +17,27 @@ Open `http://localhost:5173`.
 
 ## Deploy to Cloudflare Pages
 
-Migrated from Workers static assets. Build output is `dist/`
-(`pages_build_output_dir` in `wrangler.jsonc`).
+Build output is `dist/` (`pages_build_output_dir` in `wrangler.jsonc`).
 
 ### CLI
 
 ```bash
 npx wrangler login
-npm run deploy
+npm run ship
 ```
 
-### Git (dashboard)
+### Git / dashboard build settings
 
-1. [Workers & Pages](https://dash.cloudflare.com/?to=/:account/workers-and-pages) → **Create** → **Pages** → **Connect to Git**
-2. Select this repository
-3. Build settings:
+In the Pages project → **Settings → Builds**, use:
 
 | Setting | Value |
 | --- | --- |
-| Framework preset | Vite |
 | Build command | `npm run build` |
 | Build output directory | `dist` |
+| Deploy command | `npx wrangler pages deploy dist --project-name=compressor-landing` |
 | Node version | `22` |
 
-4. Deploy. You’ll get a `*.pages.dev` URL.
+Do **not** use `npx wrangler deploy` — that is for Workers and will fail on this Pages project.
 
 ### Custom domain (DNS can stay on Rumahweb)
 

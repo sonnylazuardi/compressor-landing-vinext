@@ -10,7 +10,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
-    "deploy": "npm run build && wrangler pages deploy dist --project-name=compressor-landing",
+    "deploy": "wrangler pages deploy dist --project-name=compressor-landing",
+    "ship": "npm run build && npm run deploy",
     "test": "npm run build && node --test tests/static-build.test.mjs"
   },
   "dependencies": {
