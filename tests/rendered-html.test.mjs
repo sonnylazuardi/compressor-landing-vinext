@@ -34,7 +34,7 @@ test("server-renders the Compressor landing page", async () => {
 
   const html = await response.text();
   assert.match(html, /<title>Compressor \| Smaller images, locally<\/title>/i);
-  assert.match(html, /Smaller images\. Same good taste\./);
+  assert.match(html, /Private\. Native\. Smaller images\. Same good taste\./);
   assert.match(html, /Download for Mac/);
   assert.match(html, /Download for Windows/);
   assert.match(html, /Your images stay local/);

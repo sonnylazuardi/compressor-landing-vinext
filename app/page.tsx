@@ -1,20 +1,43 @@
 import Image from "next/image";
+import { Command, Star, type LucideProps } from "lucide-react";
 
 const macDownload =
   "https://github.com/sonnylazuardi/image-compressor-native-sdk/releases/download/v0.1.2/Compressor-macos-arm64.zip";
 const windowsDownload =
   "https://github.com/sonnylazuardi/image-compressor-native-sdk/releases/download/v0.1.2/Compressor-windows-x64.zip";
 
+function WindowsIcon({ size = 24, className }: Pick<LucideProps, "size" | "className">) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+      className={className}
+    >
+      <path d="M3 5.14 10.54 4v7.07H3V5.14Zm8.46-1.3L21 2.5v8.57h-9.54V3.84ZM3 12.79h7.54V19.9L3 18.8v-6.01Zm8.46 0H21V21.5l-9.54-1.4v-7.31Z" />
+    </svg>
+  );
+}
+
 function DownloadButtons({ compact = false }: { compact?: boolean }) {
   return (
     <div className={`download-buttons${compact ? " download-buttons--compact" : ""}`}>
       <a className="download-button download-button--primary" href={macDownload}>
         <span className="download-button__platform">macOS</span>
-        <span>Download for Mac</span>
+        <span className="download-button__label">
+          <Command aria-hidden size={18} strokeWidth={2} />
+          Download for Mac
+        </span>
       </a>
       <a className="download-button download-button--secondary" href={windowsDownload}>
         <span className="download-button__platform">Windows</span>
-        <span>Download for Windows</span>
+        <span className="download-button__label">
+          <WindowsIcon size={16} />
+          Download for Windows
+        </span>
       </a>
     </div>
   );
@@ -40,17 +63,17 @@ export default function Home() {
           <a href="#features">Why Compressor</a>
           <a
             className="nav-download"
-            href="https://github.com/sonnylazuardi/image-compressor-native-sdk/releases/tag/v0.1.2"
+            href="https://github.com/sonnylazuardi/image-compressor-native-sdk"
           >
-            View release
+            <Star aria-hidden size={15} strokeWidth={2.25} />
+            Star on GitHub
           </a>
         </nav>
       </header>
 
       <section className="hero" id="top">
         <div className="hero__copy">
-          <p className="eyebrow">Native image compression</p>
-          <h1>Smaller images. Same good taste.</h1>
+          <h1>Private. Native. Smaller images. Same good taste.</h1>
           <p className="hero__intro">
             Turn everyday images into lightweight WebP files, right on your desktop.
           </p>
@@ -61,7 +84,7 @@ export default function Home() {
           <div className="hero__image-wrap">
             <Image
               unoptimized
-              src="/compressor-hero.png"
+              src="/compressor-hero.webp"
               alt="Compressor app showing an image preview and quality controls"
               width={1536}
               height={1024}
