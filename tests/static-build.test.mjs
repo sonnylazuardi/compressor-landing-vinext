@@ -31,4 +31,8 @@ test("builds a static Compressor landing page", () => {
     output,
     /releases\/download\/v0\.1\.2\/Compressor-windows-x64\.zip/,
   );
+  assert.match(
+    readFileSync(join(dist, "_redirects"), "utf8"),
+    /\/\* +\/index\.html +200/,
+  );
 });
