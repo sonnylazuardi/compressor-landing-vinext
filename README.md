@@ -16,10 +16,9 @@ Open `http://localhost:3000`.
 
 ## Deploy to Cloudflare Workers
 
-This is a **vinext** app, not OpenNext. Do not use `npx wrangler deploy` alone
-in the Cloudflare dashboard — that auto-detects Next.js and breaks the build.
+This is a **vinext** app (output in `dist/`), not OpenNext / `.next`.
 
-### One-time local deploy
+### Local deploy
 
 ```bash
 npx wrangler login
@@ -28,16 +27,16 @@ npm run deploy
 
 ### Cloudflare Workers Builds (GitHub)
 
-In the Worker’s **Settings → Build**:
+`wrangler.jsonc` runs `npm run build` before deploy, so the default
+dashboard command works:
 
 | Setting | Value |
 | --- | --- |
 | Build command | *(leave empty)* |
-| Deploy command | `npm run deploy` |
+| Deploy command | `npx wrangler deploy` |
 | Root directory | `/` |
 
-Do **not** select a Next.js / OpenNext framework preset. Output is `dist/`,
-not `.next/`.
+Do **not** select a Next.js / OpenNext framework preset.
 
 ## Production checks
 
