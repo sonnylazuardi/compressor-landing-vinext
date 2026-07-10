@@ -11,6 +11,8 @@
   --accent-strong: #c8453a;
   --accent-soft: #f7d3cd;
   --shadow: rgba(76, 60, 50, 0.17);
+  --page-max: 1180px;
+  --page-gutter: 20px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -54,10 +56,20 @@ main {
   overflow: hidden;
 }
 
+/* One shared page shell so header, hero, features, CTA, and footer align. */
+.site-header,
+.hero,
+.feature-intro,
+.feature-layout,
+.native-section,
+.final-cta,
+footer {
+  width: min(100% - (var(--page-gutter) * 2), var(--page-max));
+  margin-inline: auto;
+}
+
 .site-header {
-  width: min(100% - 40px, 1380px);
   height: 72px;
-  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -112,9 +124,7 @@ nav a:hover {
 }
 
 .hero {
-  width: min(100% - 40px, 1380px);
   min-height: calc(100dvh - 72px);
-  margin: 0 auto;
   padding: 42px 0 72px;
   display: grid;
   grid-template-columns: minmax(340px, 0.82fr) minmax(520px, 1.18fr);
@@ -124,7 +134,6 @@ nav a:hover {
 
 .hero__copy {
   max-width: 600px;
-  padding-left: clamp(0px, 2vw, 28px);
   animation: enter-up 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
@@ -146,7 +155,7 @@ p {
 
 h1 {
   margin-bottom: 26px;
-  max-width: 10ch;
+  max-width: calc(10ch + 60px);
   font-size: clamp(54px, 5.2vw, 82px);
   line-height: 0.96;
   letter-spacing: -0.068em;
@@ -275,8 +284,6 @@ footer a:focus-visible {
 }
 
 .feature-intro {
-  width: min(100% - 40px, 1180px);
-  margin: 0 auto;
   padding: 150px 0 76px;
 }
 
@@ -302,8 +309,7 @@ footer a:focus-visible {
 }
 
 .feature-layout {
-  width: min(100% - 40px, 1180px);
-  margin: 0 auto 170px;
+  margin-bottom: 170px;
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
   gap: 18px;
@@ -481,8 +487,6 @@ footer a:focus-visible {
 }
 
 .native-section {
-  width: min(100% - 40px, 1180px);
-  margin: 0 auto;
   padding: 120px 0 150px;
   border-top: 1px solid var(--line);
   display: grid;
@@ -522,9 +526,8 @@ footer a:focus-visible {
 }
 
 .final-cta {
-  width: min(100% - 40px, 1180px);
-  margin: 0 auto 28px;
-  padding: clamp(50px, 8vw, 110px) 24px;
+  margin-bottom: 28px;
+  padding: clamp(50px, 8vw, 110px) clamp(24px, 4vw, 48px);
   border-radius: 26px;
   background: var(--surface);
   text-align: center;
@@ -553,9 +556,7 @@ footer a:focus-visible {
 }
 
 footer {
-  width: min(100% - 40px, 1180px);
   min-height: 120px;
-  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
@@ -598,17 +599,13 @@ footer > a {
     grid-template-columns: 1fr;
   }
 
-  .hero__copy {
-    padding-left: 0;
-  }
-
   h1 {
-    max-width: 11ch;
+    max-width: calc(11ch + 60px);
   }
 
   .hero__visual {
     width: min(100%, 760px);
-    margin-left: auto;
+    margin-inline: 0 auto;
   }
 
   .feature-layout {
@@ -628,14 +625,8 @@ footer > a {
 }
 
 @media (max-width: 700px) {
-  .site-header,
-  .hero,
-  .feature-intro,
-  .feature-layout,
-  .native-section,
-  .final-cta,
-  footer {
-    width: min(100% - 28px, 1180px);
+  :root {
+    --page-gutter: 14px;
   }
 
   .site-header {
