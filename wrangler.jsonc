@@ -1,18 +1,15 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "compressor-landing-vinext",
-  // Cap at the local Miniflare runtime max; Cloudflare production accepts this.
   "compatibility_date": "2026-05-22",
-  "compatibility_flags": ["nodejs_compat"],
-  // Input config for @cloudflare/vite-plugin (source entry). After `vinext build`,
-  // wrangler deploy uses dist/server/wrangler.json via .wrangler/deploy/config.json.
-  "main": "./worker/index.ts",
-  "assets": {
-    "not_found_handling": "none",
-    "binding": "ASSETS"
+  // Static site only — no Worker script. build.command makes bare
+  // `npx wrangler deploy` work in Cloudflare Workers Builds.
+  "build": {
+    "command": "npm run build"
   },
-  "images": {
-    "binding": "IMAGES"
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "single-page-application"
   },
   "observability": {
     "enabled": true

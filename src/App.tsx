@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 const macDownload =
   "https://github.com/sonnylazuardi/image-compressor-native-sdk/releases/download/v0.1.2/Compressor-macos-arm64.zip";
 const windowsDownload =
@@ -84,20 +82,12 @@ function DownloadButtons({ compact = false }: { compact?: boolean }) {
   );
 }
 
-export default function Home() {
+export default function App() {
   return (
     <main>
       <header className="site-header">
         <a className="brand" href="#top" aria-label="Compressor home">
-          <Image
-            unoptimized
-            className="brand__icon"
-            src="/compressor-icon.png"
-            alt=""
-            width={44}
-            height={44}
-            priority
-          />
+          <img className="brand__icon" src="/compressor-icon.png" alt="" width={44} height={44} />
           <span>Compressor</span>
         </a>
         <nav aria-label="Primary navigation">
@@ -123,14 +113,11 @@ export default function Home() {
 
         <div className="hero__visual">
           <div className="hero__image-wrap">
-            <Image
-              unoptimized
+            <img
               src="/compressor-hero.webp"
               alt="Compressor app showing an image preview and quality controls"
               width={1536}
               height={1024}
-              sizes="(max-width: 900px) 94vw, 56vw"
-              priority
             />
           </div>
           <div className="format-note" aria-label="Supported input formats">
@@ -175,7 +162,7 @@ export default function Home() {
 
         <article className="feature feature--privacy">
           <div className="privacy-mark" aria-hidden="true">
-            <Image unoptimized src="/compressor-icon.png" alt="" width={86} height={86} />
+            <img src="/compressor-icon.png" alt="" width={86} height={86} />
           </div>
           <div>
             <h3>Your images stay local</h3>
@@ -200,8 +187,8 @@ export default function Home() {
         <div className="native-section__copy">
           <h2>Feels at home on your desktop.</h2>
           <p>
-            A focused native window, keyboard shortcuts, drag and drop, and nothing
-            between you and a smaller image.
+            A focused native window, keyboard shortcuts, drag and drop, and nothing between
+            you and a smaller image.
           </p>
         </div>
         <div className="platforms" aria-label="Available platforms">
@@ -217,13 +204,7 @@ export default function Home() {
       </section>
 
       <section className="final-cta">
-        <Image
-          unoptimized
-          src="/compressor-icon.png"
-          alt="Compressor app icon"
-          width={112}
-          height={112}
-        />
+        <img src="/compressor-icon.png" alt="Compressor app icon" width={112} height={112} />
         <h2>Make every image lighter.</h2>
         <p>Free to download for macOS and Windows.</p>
         <DownloadButtons compact />
@@ -231,13 +212,11 @@ export default function Home() {
 
       <footer>
         <div className="brand brand--footer">
-          <Image unoptimized src="/compressor-icon.png" alt="" width={34} height={34} />
+          <img src="/compressor-icon.png" alt="" width={34} height={34} />
           <span>Compressor</span>
         </div>
         <p>Private, native image compression.</p>
-        <a href="https://github.com/sonnylazuardi/image-compressor-native-sdk">
-          GitHub
-        </a>
+        <a href="https://github.com/sonnylazuardi/image-compressor-native-sdk">GitHub</a>
       </footer>
     </main>
   );
