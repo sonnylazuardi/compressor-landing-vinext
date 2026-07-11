@@ -87,7 +87,7 @@ export default function App() {
     <main>
       <header className="site-header">
         <a className="brand" href="#top" aria-label="Compressor home">
-          <img className="brand__icon" src="/compressor-icon.png" alt="" width={44} height={44} />
+          <img className="brand__icon" src="/compressor-icon.webp" alt="" width={44} height={44} />
           <span>Compressor</span>
         </a>
         <nav aria-label="Primary navigation">
@@ -126,7 +126,7 @@ export default function App() {
             />
             <img
               className="hero__app-icon"
-              src="/compressor-icon.png"
+              src="/compressor-icon.webp"
               alt=""
               width={220}
               height={220}
@@ -174,7 +174,7 @@ export default function App() {
 
         <article className="feature feature--privacy">
           <div className="privacy-mark" aria-hidden="true">
-            <img src="/compressor-icon.png" alt="" width={86} height={86} />
+            <img src="/compressor-icon.webp" alt="" width={86} height={86} />
           </div>
           <div>
             <h3>Your images stay local</h3>
@@ -216,7 +216,7 @@ export default function App() {
       </section>
 
       <section className="final-cta">
-        <img src="/compressor-icon.png" alt="Compressor app icon" width={168} height={168} />
+        <img src="/compressor-icon.webp" alt="Compressor app icon" width={168} height={168} />
         <h2>Make every image lighter.</h2>
         <p>Free to download for macOS and Windows.</p>
         <DownloadButtons compact />
@@ -225,7 +225,7 @@ export default function App() {
       <footer>
         <div className="footer__meta">
           <div className="brand brand--footer">
-            <img src="/compressor-icon.png" alt="" width={34} height={34} />
+            <img src="/compressor-icon.webp" alt="" width={34} height={34} />
             <span>Compressor</span>
           </div>
           <p>Private, native image compression.</p>
