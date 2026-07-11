@@ -95,9 +95,10 @@ export default function App() {
           <a
             className="nav-download"
             href="https://github.com/sonnylazuardi/image-compressor-native-sdk"
+            aria-label="Star on GitHub"
           >
             <StarIcon />
-            Star on GitHub
+            <span className="nav-download__label">Star on GitHub</span>
           </a>
         </nav>
       </header>
@@ -106,8 +107,8 @@ export default function App() {
         <div className="hero__copy">
           <h1>
             <span className="hero__title-lock">Private. Native.</span>{" "}
-            <span className="hero__title-lock">Smaller images.</span> Same good
-            taste.
+            <span className="hero__title-lock">Smaller images.</span>{" "}
+            <span className="hero__title-lock">Same good taste.</span>
           </h1>
           <p className="hero__intro">
             Turn everyday images into lightweight WebP files, right on your desktop.
@@ -122,6 +123,13 @@ export default function App() {
               alt="Compressor app showing an image preview and quality controls"
               width={1536}
               height={1024}
+            />
+            <img
+              className="hero__app-icon"
+              src="/compressor-icon.png"
+              alt=""
+              width={220}
+              height={220}
             />
           </div>
           <div className="format-note" aria-label="Supported input formats">
@@ -208,18 +216,20 @@ export default function App() {
       </section>
 
       <section className="final-cta">
-        <img src="/compressor-icon.png" alt="Compressor app icon" width={112} height={112} />
+        <img src="/compressor-icon.png" alt="Compressor app icon" width={168} height={168} />
         <h2>Make every image lighter.</h2>
         <p>Free to download for macOS and Windows.</p>
         <DownloadButtons compact />
       </section>
 
       <footer>
-        <div className="brand brand--footer">
-          <img src="/compressor-icon.png" alt="" width={34} height={34} />
-          <span>Compressor</span>
+        <div className="footer__meta">
+          <div className="brand brand--footer">
+            <img src="/compressor-icon.png" alt="" width={34} height={34} />
+            <span>Compressor</span>
+          </div>
+          <p>Private, native image compression.</p>
         </div>
-        <p>Private, native image compression.</p>
         <a href="https://github.com/sonnylazuardi/image-compressor-native-sdk">GitHub</a>
       </footer>
     </main>
