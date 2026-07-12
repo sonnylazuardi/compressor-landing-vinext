@@ -23,14 +23,8 @@ test("builds a static Compressor landing page", () => {
   assert.match(output, /Download for Windows/);
   assert.match(output, /Your images stay local/);
   assert.match(output, /Make every image lighter\./);
-  assert.match(
-    output,
-    /releases\/download\/v0\.1\.2\/Compressor-macos-arm64\.zip/,
-  );
-  assert.match(
-    output,
-    /releases\/download\/v0\.1\.2\/Compressor-windows-x64\.zip/,
-  );
+  assert.match(output, /github\.com\/sonnylazuardi\/compressor\/releases\/latest/);
+  assert.match(output, /github\.com\/sonnylazuardi\/compressor"/);
   assert.match(
     readFileSync(join(dist, "_redirects"), "utf8"),
     /\/\* +\/index\.html +200/,

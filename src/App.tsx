@@ -1,7 +1,5 @@
-const macDownload =
-  "https://github.com/sonnylazuardi/image-compressor-native-sdk/releases/download/v0.1.2/Compressor-macos-arm64.zip";
-const windowsDownload =
-  "https://github.com/sonnylazuardi/image-compressor-native-sdk/releases/download/v0.1.2/Compressor-windows-x64.zip";
+const latestRelease = "https://github.com/sonnylazuardi/compressor/releases/latest";
+const githubRepo = "https://github.com/sonnylazuardi/compressor";
 
 type IconProps = { size?: number; className?: string };
 
@@ -64,14 +62,14 @@ function WindowsIcon({ size = 16, className }: IconProps) {
 function DownloadButtons({ compact = false }: { compact?: boolean }) {
   return (
     <div className={`download-buttons${compact ? " download-buttons--compact" : ""}`}>
-      <a className="download-button download-button--primary" href={macDownload}>
+      <a className="download-button download-button--primary" href={latestRelease}>
         <span className="download-button__platform">macOS</span>
         <span className="download-button__label">
           <CommandIcon />
           Download for Mac
         </span>
       </a>
-      <a className="download-button download-button--secondary" href={windowsDownload}>
+      <a className="download-button download-button--secondary" href={latestRelease}>
         <span className="download-button__platform">Windows</span>
         <span className="download-button__label">
           <WindowsIcon />
@@ -94,7 +92,7 @@ export default function App() {
           <a href="#features">Why Compressor</a>
           <a
             className="nav-download"
-            href="https://github.com/sonnylazuardi/image-compressor-native-sdk"
+            href={githubRepo}
             aria-label="Star on GitHub"
           >
             <StarIcon />
@@ -230,7 +228,7 @@ export default function App() {
           </div>
           <p>Private, native image compression.</p>
         </div>
-        <a href="https://github.com/sonnylazuardi/image-compressor-native-sdk">GitHub</a>
+        <a href={githubRepo}>GitHub</a>
       </footer>
     </main>
   );
