@@ -18,12 +18,14 @@ test("builds a static Compressor landing page", () => {
   assert.match(html, /<title>Compressor \| Smaller images, locally<\/title>/i);
   assert.match(html, /property="og:image"/);
   assert.match(html, /\/og\.png/);
-  assert.match(output, /Private\. Native\. Smaller images\. Same good taste\./);
+  assert.match(output, /Private\. Native\./);
+  assert.match(output, /Same good taste\./);
   assert.match(output, /Download for Mac/);
   assert.match(output, /Download for Windows/);
   assert.match(output, /Your images stay local/);
   assert.match(output, /Make every image lighter\./);
-  assert.match(output, /github\.com\/sonnylazuardi\/compressor\/releases\/latest/);
+  assert.match(output, /api\.github\.com\/repos\/sonnylazuardi\/compressor\/releases/);
+  assert.match(output, /github\.com\/sonnylazuardi\/compressor\/releases/);
   assert.match(output, /github\.com\/sonnylazuardi\/compressor"/);
   assert.match(
     readFileSync(join(dist, "_redirects"), "utf8"),

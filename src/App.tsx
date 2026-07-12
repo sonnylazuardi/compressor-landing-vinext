@@ -1,5 +1,8 @@
-const latestRelease = "https://github.com/sonnylazuardi/compressor/releases/latest";
+import { useEffect, useState } from "react";
+
 const githubRepo = "https://github.com/sonnylazuardi/compressor";
+const releasesFallback = `${githubRepo}/releases`;
+const releasesApi = "https://api.github.com/repos/sonnylazuardi/compressor/releases?per_page=1";
 
 type IconProps = { size?: number; className?: string };
 
@@ -60,16 +63,40 @@ function WindowsIcon({ size = 16, className }: IconProps) {
 }
 
 function DownloadButtons({ compact = false }: { compact?: boolean }) {
+  // /releases/latest only resolves non-prerelease builds; current tags are
+  // prereleases, so resolve the newest tag (including prereleases) via the API.
+  const [releaseUrl, setReleaseUrl] = useState(releasesFallback);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    fetch(releasesApi, {
+      headers: { Accept: "application/vnd.github+json" },
+    })
+      .then((response) => (response.ok ? response.json() : Promise.reject()))
+      .then((releases: Array<{ html_url?: string }>) => {
+        const url = releases[0]?.html_url;
+        if (!cancelled && url) setReleaseUrl(url);
+      })
+      .catch(() => {
+        /* keep releases list fallback */
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   return (
     <div className={`download-buttons${compact ? " download-buttons--compact" : ""}`}>
-      <a className="download-button download-button--primary" href={latestRelease}>
+      <a className="download-button download-button--primary" href={releaseUrl}>
         <span className="download-button__platform">macOS</span>
         <span className="download-button__label">
           <CommandIcon />
           Download for Mac
         </span>
       </a>
-      <a className="download-button download-button--secondary" href={latestRelease}>
+      <a className="download-button download-button--secondary" href={releaseUrl}>
         <span className="download-button__platform">Windows</span>
         <span className="download-button__label">
           <WindowsIcon />
